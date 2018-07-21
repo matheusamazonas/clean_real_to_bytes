@@ -1,14 +1,32 @@
 #include <stdlib.h>
 
-typedef struct clean_string *CleanString;
+#define Length(s) (*(unsigned long *)(s))
+#define Chars(s) ((char*)(1+(unsigned long *)(s)))
 
-struct clean_string 
+typedef struct float_string *FloatString;
+
+struct float_string 
 { 
-	int clean_string_length; 
-	unsigned char clean_string_characters[4]; 
+	int length; 
+	unsigned char chars[4]; 
 };
 
-CleanString* doubleTo4bytes (double d)
+union float_bytes
 {
-	return NULL;
+	float f;
+	unsigned char bs[4];
+};
+
+FloatString* doubleTo4bytes (double d)
+{
+	union float_bytes data;
+	data.f = (float) d;
+
+	FloatString* s = malloc(sizeof(struct float_string));
+	Length(s) = 4;
+	for (int i=0; i < 4; i++)
+	{
+		Chars(s)[i] = data.bs[i];
+	}
+	return s;
 }
