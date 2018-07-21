@@ -1,7 +1,9 @@
-all:
+all: build test
+
+build:
 	mkdir -p Clean\ System\ Files
-	gcc -c convert.c
-	mv convert.o Clean\ System\ Files/convert.o
+	gcc -c convert_real.c
+	mv convert_real.o Clean\ System\ Files/convert_real.o
 
 test:
 	cpm project test create

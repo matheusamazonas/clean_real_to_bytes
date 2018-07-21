@@ -5,7 +5,7 @@
 
 typedef struct float_string *FloatString;
 
-struct float_string 
+struct float_string
 { 
 	int length; 
 	unsigned char chars[4]; 
@@ -29,4 +29,14 @@ FloatString* doubleTo4bytes (double d)
 		Chars(s)[i] = data.bs[i];
 	}
 	return s;
+}
+
+double bytesToDouble(FloatString* s)
+{
+	union float_bytes data;
+	for (int i=0; i < 4; i++)
+	{
+		data.bs[i] = Chars(s)[i];
+	}
+	return data.f;
 }
