@@ -1,12 +1,9 @@
 module test
 
+import StdList
 import ConvertReal
 
-Start :: [Real]
-Start = [ 
-	bytesToReal (realTo32 3.14),
-	bytesToReal (realTo32 0.0),
-	bytesToReal (realTo32 1242.17429),
-	bytesToReal (realTo32 888888.599999),
-	bytesToReal (realTo32 0.000000001123)
-	]
+Start :: [(Real,Real)]
+Start = map (\x -> (x, (bytesToReal (realTo32 x)))) numbers
+where
+	numbers = [3.14, 0.0, 1242.17429, 888888.599999,0.000000001123]

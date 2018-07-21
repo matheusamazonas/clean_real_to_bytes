@@ -8,6 +8,7 @@ build:
 test:
 	cpm project test create
 	cpm test.prj
+	./test
 
 clean:
 	rm -r Clean\ System\ Files
