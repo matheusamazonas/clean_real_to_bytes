@@ -1,4 +1,7 @@
 *.o
 *.abc
 *.prj
+*.sapl
+*.tcl
 test
+
