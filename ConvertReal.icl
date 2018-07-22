@@ -4,11 +4,11 @@ import code from "convert_real."
 
 realTo32 :: !Real-> String
 realTo32 _ = code {
-		ccall doubleTo4bytes "I:S"
+		ccall doubleTobytes32 "I:S"
 	}
 
 bytesToReal :: !String -> Real
 bytesToReal _ = code {
-		ccall bytesToDouble "S:R"
+		ccall bytesToDouble32 "S:R"
 	}
 
