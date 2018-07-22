@@ -1,4 +1,4 @@
 definition module ConvertReal
 
-realTo32 :: !Real -> String
-bytesToReal :: !String -> Real
+realToBytes32 :: !Real -> String
+bytesToReal32 :: !String -> Real
