@@ -18,7 +18,9 @@ fetch:
 	rm clean.tgz
 
 build: 
-	make
+	mkdir -p Clean\ System\ Files
+	gcc -c convert_real.c
+	mv convert_real.o Clean\ System\ Files/convert_real.o
 	$(CPM) project test create
 	$(CPM) test.prj
 	./test
