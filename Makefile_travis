@@ -18,6 +18,7 @@ fetch:
 	rm clean.tgz
 
 build: 
+	make
 	$(CPM) project test create
 	$(CPM) test.prj
 	./test
