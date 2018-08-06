@@ -1,0 +1,23 @@
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	CLEAN_BUILD = "https://ftp.cs.ru.nl/Clean/builds/linux-x64/clean-bundle-complete-linux-x64-latest.tgz"
+endif
+ifeq ($(UNAME_S),Darwin)
+	CLEAN_BUILD = "https://ftp.cs.ru.nl/Clean/builds/macos-x64/clean-bundle-complete-macos-x64-latest.tgz"
+endif
+
+CLEAN_HOME := clean-bundle-complete
+CPM := $(CLEAN_HOME)/bin/cpm
+CLM := $(CLEAN_HOME)//bin/clm
+
+all: fetch build
+
+fetch:
+	curl -o clean.tgz $(CLEAN_BUILD)
+	tar -xvzf clean.tgz
+	rm clean.tgz
+
+build: 
+	$(CPM) project test create
+	$(CPM) test.prj
+	./test
